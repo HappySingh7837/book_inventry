@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Inventory.Models.ModelBooks>
+
+@{
+    ViewBag.Title = "Book Inventory System";
+}
+
+<h2>Index</h2>
+
+
+<p>
+    @Html.ActionLink("Add New Book", "Create")
+</p>
+@using (Html.BeginForm("Index", "User"))
+{ 
+    <input id="Search" name="Search" type="text" placeholder="Enter Search Keyword " >
+
+    <input type="submit" value="Search" class="btn btn-default" />
+}
+<table class="table"  cellpadding="10">
+    <tr>
+       
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BookID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BYear)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publisher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BYear)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id = item.BookID }) |
+               
+                @Html.ActionLink("Delete", "Delete", new { id = item.BookID })
+            </td>
+        </tr>
+    }
+
+</table>
